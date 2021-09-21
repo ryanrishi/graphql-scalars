@@ -24,6 +24,9 @@ describe('validator', () => {
       '00:11:59Z',
       '00:00:00+01:30',
       '00:00:00-01:30',
+      '00:00:00+0130',
+      '00:00:00-0130',
+      '00:00:00.000+0100',
       '00:00:00.1Z',
       '00:00:00.1-01:30',
       '00:00:00.34Z',
@@ -56,11 +59,9 @@ describe('validator', () => {
       '00:00:60Z',
       '13:60:61Z',
       '00:00:00+01',
-      '00:00:00+0100',
       // Time with hours, minutes, seconds and fractional seconds
       '00:00:00.Z',
       '00:00:00.223',
-      '00:00:00.000+0100',
       '00:00:00.000+01',
       '00:00:00.000+24:00',
       '00:00:00.000+00:60',
@@ -68,7 +69,7 @@ describe('validator', () => {
       '2016-01-01T00:00:00.223Z',
       '2016-01-01T00Z',
     ].forEach((time) => {
-      it(`identifies ${time} as an invalid date`, () => {
+      it(`identifies ${time} as an invalid time`, () => {
         expect(validateTime(time)).toEqual(false);
       });
     });
@@ -119,11 +120,7 @@ describe('validator', () => {
 
   describe('validateUnixTimestamp', () => {
     [
-      854325678,
-      876535,
-      876535.8,
-      876535.8321,
-      -876535.8,
+      854325678, 876535, 876535.8, 876535.8321, -876535.8,
       // The maximum representable unix timestamp
       2147483647,
       // The minimum representable unit timestamp
@@ -183,7 +180,6 @@ describe('validator', () => {
       '2016-02-01T00:00:0Z',
       '2015-02-29T00:00:00Z',
       '2016-02-01T00:00:00',
-      '2017-01-07T11:25:00+0100',
       '2017-01-07T11:25:00+01',
       '2017-01-07T11:25:00+',
       // Date-time with hours, minutes, seconds and fractional seconds
@@ -191,7 +187,6 @@ describe('validator', () => {
       '2015-02-29T00:00:00.000Z',
       '2016-02-01T00:00:00.223',
       '2016-02-01T00:00:00',
-      '2017-01-07T11:25:00.450+0100',
       '2017-01-07T11:25:00.450+01',
       '2017-44-07T11:25:00.450+01:00',
       '2017-01-07T25:25:00.450+01:00',

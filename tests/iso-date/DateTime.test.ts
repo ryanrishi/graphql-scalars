@@ -23,8 +23,6 @@ const invalidDates = [
   '2016-02-01T000059Z',
   // Datetime with hours, minutes, seconds and fractional seconds
   '2016-02-01T00:00:00.Z',
-  // Datetime with hours, minutes, seconds, fractional seconds and timezone.
-  '2015-02-24T00:00:00.000+0100',
 ];
 
 const validDates = [
@@ -43,6 +41,7 @@ const validDates = [
     new Date(Date.UTC(2017, 0, 7, 10, 25, 0, 450)),
   ],
   ['2016-02-01t00:00:00.000z', new Date(Date.UTC(2016, 1, 1, 0, 0, 0, 0))],
+  ['2015-02-24T00:00:00.000+0100', new Date(Date.UTC(2015, 1, 23, 23, 0, 0))],
 ];
 
 describe('GraphQLDateTime', () => {
